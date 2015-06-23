@@ -37,10 +37,10 @@ object SliderSample extends JFXApp {
 
 	stage = new JFXApp.PrimaryStage {
 		title = "Slider Sample"
-		val s = new Scene(root, 600, 400)
+		val s = new Scene(root, 535, 700)
 
     val grid = new GridPane()
-    grid.padding = new Insets(10, 10, 10, 10)
+    grid.padding = Insets(10, 10, 10, 10)
     grid.vgap = 10
     grid.hgap = 70
 
@@ -56,18 +56,46 @@ object SliderSample extends JFXApp {
     GridPane.setConstraints(opacityCaption, 0, 1)
     grid.children.add(opacityCaption)
 
-    opacityLevel.va
+    cappuccino.opacity <==> opacityLevel.value
+    opacityValue.text <== opacityLevel.value.asString("%.2f")
 
+    GridPane.setConstraints(opacityLevel, 1, 1)
+    grid.children.add(opacityLevel)
 
+    opacityValue.textFill = textColor
+    GridPane.setConstraints(opacityValue, 2, 1)
+    grid.children.add(opacityValue)
 
-}
+    sepiaCaption.textFill = textColor
+    GridPane.setConstraints(sepiaCaption, 0, 2)
+    grid.children.add(sepiaCaption)
 
-     {
-			content = new StackPane {
-  			content = new ImageView {
-  				image = new Image(getClass().getResourceAsStream("test.png"))
-  			}
-			}
-		}
-	}
+    sepiaEffect.level <==> sepiaTone.value
+    sepiaValue.text <== sepiaTone.value.asString("%.2f")
+
+    GridPane.setConstraints(sepiaTone, 1, 2)
+    grid.children.add(sepiaTone)
+
+    sepiaValue.textFill = textColor
+    GridPane.setConstraints(sepiaValue, 2, 2)
+    grid.children.add(sepiaValue)
+
+    scalingCaption.textFill = textColor
+    GridPane.setConstraints(scalingCaption, 0, 3)
+    grid.children.add(scalingCaption)
+
+    cappuccino.scaleX <==> scaling.value
+    cappuccino.scaleY <==> scaling.value
+    scalingValue.text <== scaling.value.asString("%.2f")
+
+    GridPane.setConstraints(scaling, 1, 3)
+    grid.children.add(scaling)
+
+    scalingValue.textFill = textColor
+    GridPane.setConstraints(scalingValue, 2, 3)
+    grid.children.add(scalingValue)
+
+    scene = s
+  }  
+
 }
